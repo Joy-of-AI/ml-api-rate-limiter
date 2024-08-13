@@ -12,7 +12,7 @@ Once your machine learning model is trained and ready to go, you need to decide 
 4.	Serverless Functions: Cloud-based serverless platforms can execute model inference without the need to manage infrastructure, automatically scaling based on demand.
 5.	Containerisation: Using containers like Docker helps manage and deploy your model consistently across different environments. Tools like Kubernetes can help scale and orchestrate these containers.
 
-In this article, we'll focus on the first approach, ML models that have been productionised and available as an API. This article explains how to design and develop a rate limiter to protect any API-based system, including those that serve machine learning models. We'll use a sample project to illustrate this process, including code for rate limiting, API setup, and unit testing.
+In this project, we'll focus on the first approach, ML models that have been productionised and available as an API. This project explains how to design and develop a rate limiter to protect any API-based system, including those that serve machine learning models. We'll use a sample project to illustrate this process, including code for rate limiting, API setup, and unit testing.
 
 ### What is API Rate Limiter?
 An API rate limiter is a mechanism to control the number of requests a client can make to an API within a specific time period (e.g., 100 requests per minute). It ensures that all clients receive a fair share of resources and prevents any single client from overwhelming the system. Also, it protects backend systems from being overloaded and maintains performance stability. Rate limiting is especially important in high-traffic environments and helps maintain the performance and reliability of the system.
