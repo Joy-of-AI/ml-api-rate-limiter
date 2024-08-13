@@ -20,49 +20,9 @@ An API rate limiter is a mechanism to control the number of requests a client ca
 ### Three Approaches to Design API Rate Limiter
 Three common approaches to design the rate limiter are explained in below table and presented in below image. Among them, the third approach (API Gateway Rate Limiter) is generally preferred due to its centralised control, low latency impact, and efficient use of caching for data storage. This method simplifies scaling and provides consistent rate limiting, while minimising added complexity and latency. In addition, there is no extra call to API gateway since anyway we hit the API gateway for checking security of request. 
 
+![Rate_limiter_approaches](https://github.com/user-attachments/assets/052b0764-f80b-403b-9227-c4504247b2b1)
 
-
-
-
-
-
-
-Approach 1: Standalone Rate Limiter
-
-
-
-
-
-
-Approach 2: In-API Server Rate Limiter
-
-
-
-
-
-
-
-
-Approach 3: API Gateway Rate Limiter
-
-
-
-
-
-
-
-
-
-
-Aspect	Approach 1: Standalone Rate Limiter	Approach 2: In-API Server Rate Limiter	Approach 3: API Gateway Rate Limiter
-Description	Separate service handling rate limiting checks.	Rate limiting logic integrated into API servers.	Rate limiting logic in API gateway, between client and servers.
-Location	Between client and API server	Inside each API server; logic needs to be duplicated.	In API gateway
-Complexities	•	Additional service needs maintenance
-•	Introduces latency since it requires an extra HTTP call	•	Rate Limiter logic duplicated across all API servers
-•	Mixing Rate Limiter logic and API logic can affect server performance	•	Requires gateway setup
-Consistency	High; separate service ensures consistent rate limiting.	Medium; risk of inconsistent logic across servers.	High; centralized control ensures consistency.
-Data Storage Solution	Typically uses a database (e.g., MySQL).	Same as API server’s storage.	Usually uses cache (e.g., Redis) for quick access.
-Cache vs. DB	Database: Less efficient; high latency due to disk access.	Database: Mixed with API server logic; less efficient.	Cache (e.g., Redis): Efficient; in-memory, quick access.
+![Rate_limiter_approaches_Comparison](https://github.com/user-attachments/assets/f7332970-c767-468c-a2e0-533ceb48de67)
 
 In order to implement the rate limiter logic, we need (1) client’s user ID or IP address to be able to identify them, (2) number of allowed requests in a specific period of time, and (3) timestamp of latest request per client. Ideally, we need (1) temporary storage for recent data only and (2) very fast access. This makes sure that your memory usage is very low and you are not retaining indefinite unnecessary data. There are two common options as storage, including a database such as MySQL database, and CACHE. MySQL database is not memory efficient since it stores one record for every request, which data size will be extremely big as client sends more requests to API. It causes storing unnecessary data that we may not need to use them after sometime. Also, accessing this data stored in disk, followed by computations and aggregation queries on this big data will be time taking that causes latency. On the other hand, CACHE stores data temporarily and provides very quick access to data because CACHE resides in memory not disk, whereas SQL DB stores data in disk.
 Redis is a common caching client that (1) stores data in memory, (2) provides quick access to data, (3) uses time to leave (TTL) to retain data for specific period of time only, and (4) minimises computation time since it includes functions like increment, decrement, and counters, that we can easily use to do very quick math, which is all we need to rate limiter.
@@ -70,23 +30,7 @@ Redis is a common caching client that (1) stores data in memory, (2) provides qu
 API Gateway Rate Limiter with Data Storage (Redis as in-Memory CACHE)
 When the client makes the request, the rate limiter gets the request, does some calculation based on data in cache whether the user should be rate limited or not. If the user should be rate limited, it sends http status code of 429 to the user. So, user know that they are rate limited, otherwise it forwards the request to API server and API server sends back the response to the client.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Design_rate_limiter](https://github.com/user-attachments/assets/96293ab2-3b3f-4500-8b55-db1a6d762a35)
 
 Rate Limiter needs to provide enough feedback to the client about why they have been rate limited and when they can send the request. In this work, we use appropriate status code (status code of 429 that represents too many requests) to notify the client that they exceeded sending requests to the API, the time that they can try to send a new request (e.g. ‘Client exceeded sending requests. Please try again after 10 seconds’). Also, when their request is successful, we provide them information about how many more requests they can send in a specific period of time that we mention them too (e.g. ‘Request was successful. They can send 5 more requests in the next 20 seconds’).
 
