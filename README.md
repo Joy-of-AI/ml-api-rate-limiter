@@ -35,7 +35,7 @@ An API rate limiter is a mechanism to control the number of requests a client ca
 ### Three Approaches to Design API Rate Limiter
 Three common approaches to design the rate limiter are explained in below table and presented in below image. Among them, the third approach (API Gateway Rate Limiter) is generally preferred due to its centralised control, low latency impact, and efficient use of caching for data storage. This method simplifies scaling and provides consistent rate limiting, while minimising added complexity and latency. In addition, there is no extra call to API gateway since anyway we hit the API gateway for checking security of request. 
 
-![Rate_limiter_approaches](https://github.com/user-attachments/assets/052b0764-f80b-403b-9227-c4504247b2b1)
+![Rate_limiter_approaches](https://github.com/user-attachments/assets/ad08830d-c1c4-4b68-8395-4f32c05cc594)
 
 #### Comparing three designs of Rate Limiter
 ![Rate_limiter_approaches_Comparison](https://github.com/user-attachments/assets/f7332970-c767-468c-a2e0-533ceb48de67)
