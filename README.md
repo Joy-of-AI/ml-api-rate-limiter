@@ -10,6 +10,10 @@
 - If rate-limited, it extracts the Retry-After header to determine how long to wait before making another request.
 - It also handles exceptions that might occur during the HTTP request process.
 
+#### API rate limiter with Redis as in-memory CACHE
+  ![Design_rate_limiter](https://github.com/user-attachments/assets/39a90050-5de8-413b-8038-0e11f48b1f79)
+
+
 
 ### Introduction
 Deploying machine learning (ML) models, including large language models (LLMs), to production is a crucial step in making them accessible and useful in real-world scenarios. However, deploying a model isn't just about making it available; it also involves ensuring it operates efficiently, remains available, and is protected from misuse or overloading. 
