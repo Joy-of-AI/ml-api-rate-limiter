@@ -1,6 +1,6 @@
 # ml-api-rate-limiter
 
-**Protecting the Performance of Production Machine Learning APIs with Effective Rate Limiting**
+## Protecting the Performance of Production Machine Learning APIs with Effective Rate Limiting
 
 Introduction
 Deploying machine learning (ML) models, including large language models (LLMs), to production is a crucial step in making them accessible and useful in real-world scenarios. However, deploying a model isn't just about making it available; it also involves ensuring it operates efficiently, remains available, and is protected from misuse or overloading. 
