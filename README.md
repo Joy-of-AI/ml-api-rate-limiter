@@ -2,11 +2,14 @@
 
 ## Protecting the Performance of Production Machine Learning APIs with Effective Rate Limiting
 
+
 ### Summary
 - The code sends multiple HTTP GET requests to a specified API endpoint.
 - It checks the status code of each response and handles cases for successful requests (200 OK) and rate-limiting responses (429 Too Many Requests).
+- If not rate-limited, it mentions how many more requests the client can send, followed by the timing left to send those requests.
 - If rate-limited, it extracts the Retry-After header to determine how long to wait before making another request.
 - It also handles exceptions that might occur during the HTTP request process.
+
 
 ### Introduction
 Deploying machine learning (ML) models, including large language models (LLMs), to production is a crucial step in making them accessible and useful in real-world scenarios. However, deploying a model isn't just about making it available; it also involves ensuring it operates efficiently, remains available, and is protected from misuse or overloading. 
@@ -20,8 +23,10 @@ Once your machine learning model is trained and ready to go, you need to decide 
 
 In this project, we'll focus on the first approach, ML models that have been productionised and available as an API. This project explains how to design and develop a rate limiter to protect any API-based system, including those that serve machine learning models. We'll use a sample project to illustrate this process, including code for rate limiting, API setup, and unit testing.
 
+
 ### What is API Rate Limiter?
 An API rate limiter is a mechanism to control the number of requests a client can make to an API within a specific time period (e.g., 100 requests per minute). It ensures that all clients receive a fair share of resources and prevents any single client from overwhelming the system. Also, it protects backend systems from being overloaded and maintains performance stability. Rate limiting is especially important in high-traffic environments and helps maintain the performance and reliability of the system.
+
 
 ### Three Approaches to Design API Rate Limiter
 Three common approaches to design the rate limiter are explained in below table and presented in below image. Among them, the third approach (API Gateway Rate Limiter) is generally preferred due to its centralised control, low latency impact, and efficient use of caching for data storage. This method simplifies scaling and provides consistent rate limiting, while minimising added complexity and latency. In addition, there is no extra call to API gateway since anyway we hit the API gateway for checking security of request. 
@@ -41,6 +46,7 @@ When the client makes the request, the rate limiter gets the request, does some 
 
 Rate Limiter needs to provide enough feedback to the client about why they have been rate limited and when they can send the request. In this work, we use appropriate status code (status code of 429 that represents too many requests) to notify the client that they exceeded sending requests to the API, the time that they can try to send a new request (e.g. ‘Client exceeded sending requests. Please try again after 10 seconds’). Also, when their request is successful, we provide them information about how many more requests they can send in a specific period of time that we mention them too (e.g. ‘Request was successful. They can send 5 more requests in the next 20 seconds’).
 
+
 ### Python Implementation
 The code has been developed in Python; I have used Visual Studio Code for this demo. Code structure is as below:
 
@@ -50,6 +56,7 @@ The code has been developed in Python; I have used Visual Studio Code for this d
 •	**api_gateway.py: Sets up the API endpoint that utilises the rate limiter.**
 •	**test_rate_limiter.py: Writes tests to validate the functionality of the rate limiter.**
 •	**requirements.txt: Specify dependencies and Python packages used in this work.**
+
 
 ## Outputs:
 
