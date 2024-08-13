@@ -22,6 +22,7 @@ Three common approaches to design the rate limiter are explained in below table 
 
 ![Rate_limiter_approaches](https://github.com/user-attachments/assets/052b0764-f80b-403b-9227-c4504247b2b1)
 
+Comparing three designs of Rate Limiter
 ![Rate_limiter_approaches_Comparison](https://github.com/user-attachments/assets/f7332970-c767-468c-a2e0-533ceb48de67)
 
 In order to implement the rate limiter logic, we need (1) client’s user ID or IP address to be able to identify them, (2) number of allowed requests in a specific period of time, and (3) timestamp of latest request per client. Ideally, we need (1) temporary storage for recent data only and (2) very fast access. This makes sure that your memory usage is very low and you are not retaining indefinite unnecessary data. There are two common options as storage, including a database such as MySQL database, and CACHE. MySQL database is not memory efficient since it stores one record for every request, which data size will be extremely big as client sends more requests to API. It causes storing unnecessary data that we may not need to use them after sometime. Also, accessing this data stored in disk, followed by computations and aggregation queries on this big data will be time taking that causes latency. On the other hand, CACHE stores data temporarily and provides very quick access to data because CACHE resides in memory not disk, whereas SQL DB stores data in disk.
