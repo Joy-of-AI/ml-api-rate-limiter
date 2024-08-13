@@ -2,6 +2,13 @@
 
 ## Protecting the Performance of Production Machine Learning APIs with Effective Rate Limiting
 
+### Summary
+# Summary
+**The code sends multiple HTTP GET requests to a specified API endpoint.**
+**It checks the status code of each response and handles cases for successful requests (200 OK) and rate-limiting responses (429 Too Many Requests).**
+**If rate-limited, it extracts the Retry-After header to determine how long to wait before making another request.**
+**It also handles exceptions that might occur during the HTTP request process.**
+
 ### Introduction
 Deploying machine learning (ML) models, including large language models (LLMs), to production is a crucial step in making them accessible and useful in real-world scenarios. However, deploying a model isn't just about making it available; it also involves ensuring it operates efficiently, remains available, and is protected from misuse or overloading. 
 
