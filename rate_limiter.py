@@ -2,7 +2,7 @@ import redis # allows interaction with a Redis database. Redis is used here for 
 import time # for retrieving the current time and managing time-based operations
 
 class RateLimiter: # Defines a class, which will handle the rate limiting logic using Redis.
-    def __init__(self, redis_host='localhost', redis_port=6379, limit=2, period=10): # Initializes the RateLimiter class with optional parameters for Redis connection and rate limiting configuration.
+    def __init__(self, redis_host='localhost', redis_port=6379, limit=4, period=10): # Initializes the RateLimiter class with optional parameters for Redis connection and rate limiting configuration.
         self.redis = redis.StrictRedis(host=redis_host, port=redis_port, decode_responses=True) # Creates an instance of the Redis client.
         # Redis client decodes responses from the Redis server into Python strings (or other appropriate data types) automatically
         self.limit = limit # Maximum number of requests allowed in the specified time period
