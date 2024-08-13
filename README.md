@@ -56,10 +56,10 @@ The code has been developed in Python; I have used Visual Studio Code for this d
 
 ![Code_structure](https://github.com/user-attachments/assets/32087172-71fe-43c8-84a7-eac2d57482f9)
 
-•	**rate_limiter.py: Implements the core rate limiting logic.**
-•	**api_gateway.py: Sets up the API endpoint that utilises the rate limiter.**
-•	**test_rate_limiter.py: Writes tests to validate the functionality of the rate limiter.**
-•	**requirements.txt: Specify dependencies and Python packages used in this work.**
+- rate_limiter.py: Implements the core rate limiting logic.
+- api_gateway.py: Sets up the API endpoint that utilises the rate limiter.
+- test_rate_limiter.py: Writes tests to validate the functionality of the rate limiter.
+- requirements.txt: Specify dependencies and Python packages used in this work.
 
 
 ## Outputs:
