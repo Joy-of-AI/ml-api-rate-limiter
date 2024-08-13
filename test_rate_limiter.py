@@ -7,7 +7,7 @@ import time # handles time-related functions, such as sleeping.
 url = "http://127.0.0.1:5000/api/resource"
 
 # Number of requests to make to the API endpoint
-num_requests = 70
+num_requests = 20
 
 for i in range(1, num_requests + 1): # run the loop 70 times, each time sending a request to the API.
     try:
