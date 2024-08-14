@@ -71,4 +71,5 @@ The code has been developed in Python; I have used Visual Studio Code for this d
 ![API_call_flask](https://github.com/user-attachments/assets/d5a91361-304f-4c78-ba77-5dd587331297)
 
 #### Output of unit test
-![Unit_test_output](https://github.com/user-attachments/assets/5786f08b-8ac0-4b94-b132-b34a4e51dd31)
+![Unit_test_output](https://github.com/user-attachments/assets/87e79913-8053-4d66-a312-23b1d40909b0)
+
