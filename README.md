@@ -39,4 +39,4 @@ This App serves as an API gateway with rate limiting functionality
 - If client exceeded number of requests to API, they will be informed when they are allowed to send the next request to the API.
 ![Unit_test_output](https://github.com/user-attachments/assets/87e79913-8053-4d66-a312-23b1d40909b0)
 
-#### If you need to make any changes or review the scheduled article before publication, you may need to adjust your settings or consult LinkedIn’s help center for any additional tools or updates they may have added.
+#### If you encounter any issues setting up the project, replicating the end-to-end code, or running the code, please feel free to reach out. I’m happy to assist with any questions or challenges you may have.
