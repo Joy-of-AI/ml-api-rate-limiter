@@ -1,9 +1,9 @@
 # ml-api-rate-limiter
 
-## Protecting the Performance of Production Machine Learning APIs with Effective Rate Limiting
+## Protecting Performance of Production Machine Learning APIs with Effective Rate Limiting
 
 ### Overview of ML Model Deployment and Rate Limiting Solutions
-The importance of deploying machine learning models in production as APIs, real-world examples of ML models utilised as APIs, concept of rate limiting, and key solution designs have been explained here: 
+The importance of deploying machine learning models in production as APIs, real-world examples of ML models utilised as APIs, concept of rate limiting, and key solution designs have been explained in this article published on LinkedIn: https://www.linkedin.com/pulse/protecting-performance-production-machine-learning-apis-amin-ph-d--qikkc/?trackingId=wSSyfIkSTn6s%2FNSUXStYew%3D%3D. 
 
 ### Summary
 - The code sends multiple HTTP GET requests to a specified API endpoint.
