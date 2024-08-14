@@ -65,11 +65,15 @@ The code has been developed in Python; I have used Visual Studio Code for this d
 ## Outputs:
 
 #### Redis Serve is up and running
+Redis is used to store the CACHE and perform computations regarding rate limiter decisioning
 ![Redis_server](https://github.com/user-attachments/assets/708a8257-ed26-459f-b591-9d4bff1e6717)
 
 #### A demanding API has been created using Flask, which is up and running
+This App serves as an API gateway with rate limiting functionality
 ![API_call_flask](https://github.com/user-attachments/assets/d5a91361-304f-4c78-ba77-5dd587331297)
 
 #### Output of unit test
+- If client request to the API is allowed, client can see how many more requests they can send to API followed by the time period.
+- If client exceeded number of requests to API, they will be informed when they are allowed to send the next request to the API.
 ![Unit_test_output](https://github.com/user-attachments/assets/87e79913-8053-4d66-a312-23b1d40909b0)
 
